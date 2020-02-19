@@ -31,7 +31,7 @@ import android.widget.TextView
 import java.io.FileOutputStream
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivityV1 : AppCompatActivity() {
     private val REQUEST_CODE_PERMISSIONS = 10
     private val REQUIRED_PERMISSIONS = arrayOf(Manifest.permission.CAMERA)
 
@@ -111,11 +111,22 @@ class MainActivity : AppCompatActivity() {
 
     private fun detectFoods(image: Image?) {
         val detector = Module.load(assetFilePath(this, "rcnn.pt"))
-        var input = TensorImageUtils.imageYUV420CenterCropToFloat32Tensor(image, 0, 512,512, TensorImageUtils.TORCHVISION_NORM_MEAN_RGB, TensorImageUtils.TORCHVISION_NORM_STD_RGB)
-        //val output = detector.forward(IValue.from(input))
+        val input = TensorImageUtils.imageYUV420CenterCropToFloat32Tensor(image, 0, 512,512, TensorImageUtils.TORCHVISION_NORM_MEAN_RGB, TensorImageUtils.TORCHVISION_NORM_STD_RGB)
 
+        val output = detector.forward(IValue.from(input)).toTensor()
+        val scores = output.dataAsFloatArray
 
-        //runOnUiThread { textView2.setText(output.toString()) }
+        var maxScore = -Float.MAX_VALUE;
+        var maxLbl = -1;
+        for (i in 0..scores.size-1) {
+            if(scores[i] > maxScore) {
+                maxScore = scores[i]
+                maxLbl = i
+            }
+        }
+        val className = ModelClasses.MODEL_CLASSES[maxLbl]
+
+        runOnUiThread { textView2.setText(className) }
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
