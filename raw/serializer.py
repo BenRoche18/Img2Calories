@@ -6,7 +6,7 @@ import os
 ROOT_DIR = os.path.dirname(os.getcwd())
 
 MODEL_PATH = os.path.join(ROOT_DIR, "models", "food_classification", "fine_tuning_mobilenet.pt")
-DEST = os.path.join(ROOT_DIR, "models", "serialized", "mobilenet_cnn.pt")
+DEST = os.path.join(ROOT_DIR, "models", "serialized", "mobilenet.pt")
 
 # define model architecture
 model = torchvision.models.mobilenet_v2(pretrained=False)

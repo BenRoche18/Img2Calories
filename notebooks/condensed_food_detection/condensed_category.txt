@@ -1,0 +1,76 @@
+id	name
+1	rice
+4	chicken-'n'-egg on rice
+6	beef curry
+7	sushi
+8	chicken rice
+9	fried rice
+12	toast
+13	croissant
+14	roll bread
+15	raisin bread
+17	hamburger
+18	pizza
+19	sandwiches
+27	spaghetti
+35	vegetable tempura
+38	sausage
+40	omelet
+43	stew
+45	fried fish
+46	grilled salmon
+51	sweet and sour pork
+54	tempura
+55	fried chicken
+61	steak
+68	egg sunny-side up
+80	roast chicken
+85	fried shrimp
+86	potato salad
+87	green salad
+95	pizza toast
+97	hot dog
+98	french fries
+99	mixed rice
+101	green curry
+110	paella
+114	pancake
+116	crape
+117	tiramisu
+118	waffle
+120	shortcake
+123	mushroom risotto
+126	french toast
+128	minestrone
+130	chicken nugget
+132	french bread
+145	bagel
+146	scone
+147	tortilla
+148	tacos
+149	nachos
+150	meat loaf
+151	scrambled egg
+153	lasagna
+154	Caesar salad
+155	oatmeal
+158	muffin
+159	popcorn
+161	doughnut
+162	apple pie
+165	lamb kebabs
+167	roast duck
+168	hot pot
+169	pork belly
+172	custard tart
+187	stir-fried mixed vegetables
+193	Pork with lemon
+197	Deep Fried Chicken Wing
+203	Crispy Noodles
+209	Fried spring rolls
+210	Steamed rice roll
+224	brownie
+225	churro
+242	chow mein
+244	kung pao chicken
+250	baked salmon

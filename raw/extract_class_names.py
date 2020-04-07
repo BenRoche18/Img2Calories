@@ -4,11 +4,10 @@ dataset = "food101"
 
 if dataset == "food256":
 
-	CLASS_PATH = os.path.join(os.path.abspath(os.sep), "Datasets", "food256", "condensed-category.txt")
+	CLASS_PATH = os.path.join(os.path.abspath(os.sep), "Datasets", "food101", "meta", "classes.txt")
 
 	with open(CLASS_PATH, 'r') as file:
-		file.readline()
-		class_names = [line.split('\t')[1].strip() for line in file.readlines()]
+		class_names = [line.strip() for line in file.readlines()]
 
 	print('"' + '",\n"'.join(class_names) + '"')
 
