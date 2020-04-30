@@ -5,15 +5,15 @@ import cv2
 from PIL import ImageTk, Image
 from google_images_download import google_images_download
 
-ROOT_DIR = os.path.dirname(os.getcwd())
+ROOT_DIR = os.path.join(os.path.abspath(os.sep), "Datasets", "temp")
 
 FOOD256_DIR = os.path.join(os.path.abspath(os.sep), "Datasets", "food256")
-IMAGES_DIR = os.path.join(FOOD256_DIR, "images")
+IMAGES_DIR = os.path.join(FOOD256_DIR, "JPEGImages")
 CLASS_PATH = os.path.join(FOOD256_DIR, "category.txt")
 
-TEMP_CLASS_PATH = os.path.join(ROOT_DIR, "temp", "category.txt")
-TEMP_IMAGES_DIR = os.path.join(ROOT_DIR, "temp", "images")
-TEMP_LABELS_DIR = os.path.join(ROOT_DIR, "temp", "labels")
+TEMP_CLASS_PATH = os.path.join(ROOT_DIR, "category.txt")
+TEMP_IMAGES_DIR = os.path.join(ROOT_DIR, "images")
+TEMP_LABELS_DIR = os.path.join(ROOT_DIR, "labels")
 
 FROM_CENTER = False
 SHOW_CROSSHAIR = False
@@ -96,6 +96,8 @@ def addImage(img_id, path):
 
 # fetches images with given search term from google and saves in temp directory
 def fetchImages(search_term, n):
+	print(search_term)
+
 	if n <= 0 or n > 1000 or search_term == '':
 		print("Invalid search parameters")
 		return
@@ -104,8 +106,8 @@ def fetchImages(search_term, n):
 		"keywords": search_term,
 		"limit": n,
 		"format": 'jpg',
-		"output_directory": os.path.join(ROOT_DIR, "temp"),
-		"print_urls": True
+		"output_directory": ROOT_DIR,
+		"print_urls": True,
 	}
 
 	response = google_images_download.googleimagesdownload()
@@ -202,8 +204,8 @@ def main():
 
 	tk.Label(root, text="Select directory: ").grid(row=4)
 	annotate_dir = tk.StringVar(root)
-	tk.OptionMenu(root, annotate_dir, *os.listdir(os.path.join(ROOT_DIR, "temp"))).grid(row=4, column=1)
-	tk.Button(root, text="Go", command=lambda: labelImages(os.path.join(ROOT_DIR, "temp", annotate_dir.get()))).grid(row=4, column=2)
+	tk.OptionMenu(root, annotate_dir, *os.listdir(ROOT_DIR)).grid(row=4, column=1)
+	tk.Button(root, text="Go", command=lambda: labelImages(os.path.join(ROOT_DIR, annotate_dir.get()))).grid(row=4, column=2)
 
 
 	### WIDGETS ABOVE ###
