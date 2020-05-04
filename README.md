@@ -6,11 +6,11 @@ This project aims to overcome the barriers of current food journal applications 
 
 ## System Overview
 Food components are localised within the image either by semantic segmentation or an ellipses approximation within a bounding box. The localised area and the depth obtained from a depth map or average food depth is mapped to a volume, giving a portion weight from which the nutritional contents is inferred.
-![System Overview](figures\architecture.PNG)
+![System Overview](figures/architecture.PNG)
 
 ## Content
 * application - Mobile phone application built from Android Studio that runs the food detection on-device using Tensorflow Lite.
-![Mobile App](figures\application.PNG)
+![Mobile App](figures/application.PNG)
 
 * databases - Nutritional database for the 256 classes within Food256 (inc. food densities and average depth).
 
